@@ -1,0 +1,132 @@
+{
+    "name": "game-mode-theme",
+    "displayName": "GAME MODE - Cyberpunk Theme",
+    "description": "A cyberpunk-inspired theme with futuristic UI elements and animations",
+    "version": "1.0.1",
+    "publisher": "local-user",
+    "license": "MIT",
+    "engines": {
+      "vscode": "^1.74.0"
+    },
+    "categories": [
+      "Themes",
+      "Other"
+    ],
+    "keywords": [
+      "cyberpunk",
+      "futuristic",
+      "gaming",
+      "neon",
+      "dark theme"
+    ],
+    "activationEvents": [
+      "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+      "themes": [
+        {
+          "label": "GAME MODE",
+          "uiTheme": "vs-dark",
+          "path": "./themes/game-mode-color-theme.json"
+        }
+      ],
+      "views": {
+        "explorer": [
+          {
+            "id": "gameModeNetwork",
+            "name": "GAME MODE Network",
+            "when": "true",
+            "contextualTitle": "Network Nodes"
+          }
+        ]
+      },
+      "commands": [
+        {
+          "command": "gameMode.toggleMatrix",
+          "title": "Toggle Matrix Effect",
+          "category": "GAME MODE"
+        },
+        {
+          "command": "gameMode.activateGameMode",
+          "title": "Activate GAME MODE",
+          "category": "GAME MODE"
+        }
+      ],
+      "menus": {
+        "view/title": [
+          {
+            "command": "gameMode.toggleMatrix",
+            "when": "view == gameModeNetwork",
+            "group": "navigation"
+          }
+        ],
+        "commandPalette": [
+          {
+            "command": "gameMode.activateGameMode",
+            "when": "true"
+          },
+          {
+            "command": "gameMode.toggleMatrix",
+            "when": "true"
+          }
+        ]
+      },
+      "keybindings": [
+        {
+          "command": "gameMode.activateGameMode",
+          "key": "ctrl+shift+g",
+          "mac": "cmd+shift+g"
+        },
+        {
+          "command": "gameMode.toggleMatrix",
+          "key": "ctrl+shift+m",
+          "mac": "cmd+shift+m"
+        }
+      ],
+      "configuration": {
+        "title": "GAME MODE",
+        "properties": {
+          "gameMode.matrixEffect": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable matrix-style background effect"
+          },
+          "gameMode.glitchEffect": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable glitch effects on UI elements"
+          },
+          "gameMode.networkVisualization": {
+            "type": "boolean",
+            "default": true,
+            "description": "Show network visualization in status bar"
+          },
+          "gameMode.animationSpeed": {
+            "type": "number",
+            "default": 1.0,
+            "minimum": 0.1,
+            "maximum": 3.0,
+            "description": "Animation speed multiplier"
+          },
+          "gameMode.neonIntensity": {
+            "type": "number",
+            "default": 0.8,
+            "minimum": 0.1,
+            "maximum": 1.0,
+            "description": "Neon glow intensity"
+          }
+        }
+      }
+    },
+    "scripts": {
+      "vscode:prepublish": "npm run compile",
+      "compile": "tsc -p ./",
+      "watch": "tsc -watch -p ./"
+    },
+    "devDependencies": {
+      "@types/vscode": "^1.74.0",
+      "@types/node": "16.x",
+      "typescript": "^4.9.4"
+    }
+  }
