@@ -275,10 +275,23 @@ class MatrixEffect {
 export function activate(context: vscode.ExtensionContext) {
     console.log('GAME MODE Extension is now active!');
 
+    // Check if auto-activate is enabled
+    const config = vscode.workspace.getConfiguration('gameMode');
+    const autoActivate = config.get<boolean>('autoActivate', true);
+
     // Initialize components
     const gameProvider = new GameModeProvider();
     const statusBar = new GameModeStatusBar();
     const matrixEffect = new MatrixEffect();
+
+    // Auto-activate GAME MODE if enabled
+    if (autoActivate) {
+        const currentTheme = vscode.workspace.getConfiguration().get<string>('workbench.colorTheme');
+        if (currentTheme !== 'GAME MODE') {
+            vscode.workspace.getConfiguration().update('workbench.colorTheme', 'GAME MODE', vscode.ConfigurationTarget.Global);
+            vscode.window.showInformationMessage('🎮 GAME MODE automatically activated!');
+        }
+    }
 
     // Register tree view with error handling
     let treeView: vscode.TreeView<NetworkNode> | undefined;

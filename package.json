@@ -2,7 +2,7 @@
     "name": "game-mode-theme",
     "displayName": "GAME MODE - Cyberpunk Theme",
     "description": "A cyberpunk-inspired theme with futuristic UI elements and animations",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "publisher": "local-user",
     "license": "MIT",
     "engines": {
@@ -115,6 +115,11 @@
             "minimum": 0.1,
             "maximum": 1.0,
             "description": "Neon glow intensity"
+          },
+          "gameMode.autoActivate": {
+            "type": "boolean",
+            "default": true,
+            "description": "Automatically activate GAME MODE on startup"
           }
         }
       }
