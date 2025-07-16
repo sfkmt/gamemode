@@ -2,7 +2,7 @@
     "name": "game-mode-theme",
     "displayName": "GAME MODE - Cyberpunk Theme",
     "description": "A cyberpunk-inspired theme with futuristic UI elements and animations",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "publisher": "local-user",
     "license": "MIT",
     "engines": {

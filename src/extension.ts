@@ -242,16 +242,16 @@ class MatrixEffect {
             char.textContent = chars[Math.floor(Math.random() * chars.length)];
             char.style.left = Math.random() * 100 + '%';
             char.style.animationDelay = Math.random() * 2 + 's';
-            char.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            char.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
             document.getElementById('matrix-container').appendChild(char);
             
             setTimeout(() => {
                 char.remove();
-            }, 5000);
+            }, 3500);
         }
         
-        // Generate matrix characters
-        setInterval(createMatrixChar, 100);
+        // Generate matrix characters - doubled rate
+        setInterval(createMatrixChar, 15);
         
         // Update network status
         function updateStatus() {
@@ -299,15 +299,6 @@ export function activate(context: vscode.ExtensionContext) {
     const activateGameModeCommand = vscode.commands.registerCommand('gameMode.activateGameMode', () => {
         // Change to GAME MODE theme
         vscode.workspace.getConfiguration().update('workbench.colorTheme', 'GAME MODE', vscode.ConfigurationTarget.Global);
-        
-        vscode.window.showInformationMessage(
-            'GAME MODE ACTIVATED! Welcome to the Matrix...',
-            'Show Effects'
-        ).then((selection) => {
-            if (selection === 'Show Effects') {
-                matrixEffect.show();
-            }
-        });
     });
 
     // Update status bar periodically
@@ -315,6 +306,11 @@ export function activate(context: vscode.ExtensionContext) {
         statusBar.updateNetworkStatus(5, 5);
         gameProvider.refresh();
     }, 5000);
+
+    // Automatically show Matrix Effect on activation
+    setTimeout(() => {
+        matrixEffect.show();
+    }, 1000);
 
     // Register disposables
     const disposables = [
