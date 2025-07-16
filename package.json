@@ -2,9 +2,22 @@
     "name": "game-mode-theme",
     "displayName": "GAME MODE - Cyberpunk Theme",
     "description": "A cyberpunk-inspired theme with futuristic UI elements and animations",
-    "version": "1.0.3",
-    "publisher": "local-user",
+    "version": "1.0.4",
+    "publisher": "sfkmt",
     "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/sfkmt/gamemode.git"
+    },
+    "bugs": {
+      "url": "https://github.com/sfkmt/gamemode/issues"
+    },
+    "homepage": "https://github.com/sfkmt/gamemode#readme",
+    "icon": "icon.png",
+    "galleryBanner": {
+      "color": "#0a0e1a",
+      "theme": "dark"
+    },
     "engines": {
       "vscode": "^1.74.0"
     },
