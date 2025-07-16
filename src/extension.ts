@@ -329,16 +329,6 @@ export function activate(context: vscode.ExtensionContext) {
     }
     
     context.subscriptions.push(...disposables);
-
-    // Show welcome message
-    vscode.window.showInformationMessage(
-        'GAME MODE Extension loaded! Ready to enter the Matrix?',
-        'Activate GAME MODE'
-    ).then((selection) => {
-        if (selection === 'Activate GAME MODE') {
-            vscode.commands.executeCommand('gameMode.activateGameMode');
-        }
-    });
 }
 
 export function deactivate() {
